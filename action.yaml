@@ -1,0 +1,9 @@
+name: kubectl-eks
+description: "'kubectl' for eks"
+author: 'Rokhun Jung'
+branding:
+  icon: 'box'
+  color: 'gray-dark'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
