@@ -16,7 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: deploy to cluster
-      uses: qazz92/kubectl@1.0.0
+      uses: qazz92/kubectl@1.0.3
       env:
         kube_confg_data: ${{ secrets.KUBE_CONFIG_DATA }}
         aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -26,7 +26,7 @@ jobs:
         args: set image --record deployment/my-app container=${{ github.repository
           }}:${{ github.sha }}
     - name: verify deployment
-      uses: qazz92/kubectl@1.0.0
+      uses: qazz92/kubectl@1.0.3
       env:
         kube_confg_data: ${{ secrets.KUBE_CONFIG_DATA }}
         aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
