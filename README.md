@@ -18,14 +18,20 @@ jobs:
     - name: deploy to cluster
       uses: qazz92/kubectl@1.0.0
       env:
-        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+        kube_confg_data: ${{ secrets.KUBE_CONFIG_DATA }}
+        aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws_region: ${{ secrets.AWS_DEFAULT_REGION }}
       with:
         args: set image --record deployment/my-app container=${{ github.repository
           }}:${{ github.sha }}
     - name: verify deployment
       uses: qazz92/kubectl@1.0.0
       env:
-        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+        kube_confg_data: ${{ secrets.KUBE_CONFIG_DATA }}
+        aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws_region: ${{ secrets.AWS_DEFAULT_REGION }}
       with:
         args: '"rollout status deployment/my-app"'
 ```
